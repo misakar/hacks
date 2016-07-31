@@ -1,0 +1,25 @@
+{
+    "configs": {
+        "columns": {
+            "age": [
+                "Integer"
+            ], 
+            "nickname": [
+                "String(164)"
+            ], 
+            "name": [
+                "String(164)"
+            ]
+        }, 
+        "fromjson": [
+            "name", 
+            "age", 
+            "nickname"
+        ], 
+        "views": [
+            "name", 
+            "age", 
+            "nickname"
+        ]
+    }
+}
