@@ -2,7 +2,7 @@
 
 dead simple restful api framework
 
-## Get Start
+## $ Get Start
 ### New a project
 <code>$ hack new demoAPI</code>
 
@@ -10,7 +10,7 @@ dead simple restful api framework
 (example for user resource) <br/>
 <code>$ hack generate api users</code>
 
-## Enjoy Your API:)
+## $ Enjoy Your API:)
 (example for user resource)
 ### Start
 
@@ -31,22 +31,22 @@ recommended [postman app](https://chrome.google.com/webstore/detail/postman/fhbj
 
 
 ### Update
-**PATCH** <code>http://localhost:5486/api/users/<id:1></code> <br/>
+**PATCH** ```http://localhost:5486/api/users/<id:1>/``` <br/>
 ***update a field:***
 
     { "email": "hacks1218@yeah.net" }
 
 ### Delete
 ***delete a user*** <br/>
-**DELETE** <code>http://localhost:5486/api/users/<id:1></code> <br/>
+**DELETE** ```http://localhost:5486/api/users/<id:1>/``` <br/>
 
 ### Pagination
-**GET** <code>http://localhost:5486/api/users/?page=1</code>
+**GET** ```http://localhost:5486/api/users/?page=1```
 
 ### Search
-**GET** <code>http://localhost:5486/api/users/?<field>=<value></code>
+**GET** ```http://localhost:5486/api/users/?<field>=<value>```
 
-## Hack Your API
+## $ Hack Your API
 you can custom your api by adding/deleting field: <br/>
 **add a new field** <br/>
 **POST** <code>http://localhost:5486/api/?rescs=users</code>
@@ -69,13 +69,13 @@ the latest table structure.
     $ python manage.py db migrate
     $ python manage.py db upgrade
 
-## Learn More Hacks
+## $ Learn More Hacks
 Hacks based on flask and flask plugins
 
 + [flask website](http://flask.pocoo.org/)
 + [flask plugins](http://flask.pocoo.org/extensions/)
 
-## Notes
+## $ Notes
 Currently, Hacks simply generate a **prototype api**, which means the api **did
 not** have: 
 
@@ -91,5 +91,5 @@ and obviously, it ***not ready to go into production***;
 But, I will continue to feed more on Hacks, and finally let Hacks become a
 **production-oriented**  but **deadly simple** restful api framework.
 
-## LICENSE
+## $ LICENSE
 MIT, check LICENSE file for detail
