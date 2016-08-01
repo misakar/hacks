@@ -14,7 +14,7 @@ dead simple restful api framework
 (example for user resource)
 ### Start
 
-    $ python manage.py runserver
+    $ hacks boot
 
 recommended [postman app](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) do api development<br/>
 
@@ -66,8 +66,7 @@ you can custom your api by adding/deleting field: <br/>
 after launch the POST request, you need to migrate and upgrade your database to
 the latest table structure.
 
-    $ python manage.py db migrate
-    $ python manage.py db upgrade
+    $ hacks migrate
 
 ## $ Learn More Hacks
 Hacks based on flask and flask plugins
