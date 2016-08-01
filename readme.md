@@ -19,32 +19,34 @@ dead simple restful api framework
 recommended [postman app](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) do api development<br/>
 
 ### Read
-**GET**  <code>http://localhost:5486/api/users/</code>
+**GET**
+
++ <code>http://localhost:5486/api/users/</code>
++ ```http://localhost:5486/api/users/<int:id>```
 
 ### Create
 **POST** <code>http://localhost:5486/api/users/</code>
 
     {
-        "username": "neo1218",
-        "email": "neo1218@yeah.net"
+        "name": "neo1218"
     }
 
 
 ### Update
-**PATCH** ```http://localhost:5486/api/users/<id:1>/``` <br/>
+**PATCH** ```http://localhost:5486/api/users/<int:id>/``` <br/>
 ***update a field:***
 
-    { "email": "hacks1218@yeah.net" }
+    { "name": "substack" }
 
 ### Delete
 ***delete a user*** <br/>
-**DELETE** ```http://localhost:5486/api/users/<id:1>/``` <br/>
+**DELETE** ```http://localhost:5486/api/users/<int:id>/``` <br/>
 
 ### Pagination
-**GET** ```http://localhost:5486/api/users/?page=1```
+**GET** ```http://localhost:5486/api/users/?page=2```
 
 ### Search
-**GET** ```http://localhost:5486/api/users/?<field>=<value>```
+**GET** ```http://localhost:5486/api/users/?<field1>=<value1>&<field2>=<field2>```
 
 ## $ Hack Your API
 you can custom your api by adding/deleting field: <br/>
