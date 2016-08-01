@@ -34,7 +34,7 @@ def generateModels(config_json_path, models_path):
             _json = "'{0}': self.{0},".format(_column)
         else:
             raise TypeError
-        _json_code.append(' '*8 + _json)
+        _json_code.append(' '*12 + _json)
 
     for _column in data['configs']['fromjson']:
         _type = data['configs']['columns'][_column]
@@ -48,7 +48,7 @@ def generateModels(config_json_path, models_path):
             _init = "self.{0} = kwargs.get('{0}')".format(_column)
         else:
             raise TypeError
-        _init_code.append(' '*12 + _init)
+        _init_code.append(' '*8 + _init)
 
 
     _models_code = """# coding: utf-8

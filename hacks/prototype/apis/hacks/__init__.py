@@ -24,4 +24,4 @@ def index():
     ), 200
 
 
-from .routes import create, delete
+from .routes import create
