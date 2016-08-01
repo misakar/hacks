@@ -16,12 +16,16 @@ def index():
         _resource_dict[_resource] = '/api/{}'.format(_resource)
     return jsonify(
         {
-            'msg': 'Hacking Hacks',
-            'project': current_app.config['PROJECT_ROOT_PATH'],
-            'apis': current_app.config['APIS_PATH'],
-            'urls': _resource_dict,
+            'hacks': {
+                'github': 'https://github.com/neo1218/hacks'
+            },
+            'meta': {
+                'project': current_app.config['PROJECT_ROOT_PATH'],
+                'apis': current_app.config['APIS_PATH'],
+                'urls': _resource_dict,
+            }
         }
     ), 200
 
 
-from .routes import create
+from .routes import create, update

@@ -5,4 +5,4 @@ from .hacksConfig import Config
 
 class resourcesConfig(Config):
 
-    RESOURCES_PAGINATION_PERPAGE = 10
+    RESOURCES_PAGINATION_PERPAGE = 0

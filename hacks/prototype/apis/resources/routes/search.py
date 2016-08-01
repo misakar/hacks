@@ -19,7 +19,7 @@ def search_resources():
                 { 'msg': 'can not find field %s' % _field }
             ), 400
         for _resource in resources:
-            if getattr(_resource, _field) != search_args.get(_field):
+            if str(getattr(_resource, _field)) != search_args.get(_field):
                 except_results.append(_resource)
                 continue
     for _resource in resources:

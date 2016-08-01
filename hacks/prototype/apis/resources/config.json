@@ -1,13 +1,20 @@
 {
     "configs": {
-        "fromjson": [
-            "name"
-        ], 
         "columns": {
-            "name": ["String(164)"]
+            "age": [
+                "Integer"
+            ], 
+            "name": [
+                "String(164)"
+            ]
         }, 
+        "fromjson": [
+            "name", 
+            "age"
+        ], 
         "views": [
-            "name"
+            "name",
+            "age"
         ]
     }
 }
