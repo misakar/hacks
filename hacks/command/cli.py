@@ -9,6 +9,10 @@ import subprocess
 from logging import StreamHandler, DEBUG
 from functions import _mkdir
 
+from templates import bp_register_template
+from templates import configs_append_template
+from templates import configs_import_template
+
 logger = logging.getLogger(__name__)
 logger.setLevel(DEBUG)
 logger.addHandler(StreamHandler())
@@ -159,8 +163,34 @@ def generate(api):
 
                         dstapi_init_file.write(new_line)
 
-    # logger.info('\033[32m(ง •_•)ง =>\033[0m register api blueprint.')
+    data = {'bp': api}
     # logger.info('\033[32m(ง •_•)ง =>\033[0m setup api config.')
+    resourceConfig = os.path.join(hacks_path, 'configs/resourceConfig.py')
+    dstConfig = os.path.join(os.path.getcwd, 'apis/configs/%sConfig.py' % api)
+    with open(resourceConfig, 'r') as rescs_cfg_file:
+        with open(dstConfig, 'w+') as dst_cfg_file:
+            for line in rescs_cfg_file:
+                new_line = line.replace('#{=> resources|config <=}',
+                        "class %(bp)sConfig(object):" % data)
+                dst_cfg_file.write(new_line)
+
+    # logger.info('\033[32m(ง •_•)ง =>\033[0m register api blueprint.')
+    hacks_init_file = os.path.join(os.getcwd(), 'apis/__init__.py')
+    hacks_init_temp_file = os.path.join(os.getcwd(), 'apis/init_temp.py')
+    with open(hacks_init_file, 'r') as init_file:
+        with open(hacks_init_temp_file, 'w') as init_temp_file:
+            for line in init_file:
+                new_line = line \
+                    .replace('#{=> configs|import <=}',
+                             configs_import_template % data) \
+                    .replace('#{=> register|blueprint <=}',
+                             bp_register_template % data) \
+                    .replace('#{=> configs|append <=}',
+                             configs_append_template % data)
+                init_temp_file.write(new_line)
+    shutil.copy(hacks_init_temp_file, hacks_init_file)
+    os.remove(hacks_init_temp_file)
+
     # logger.info('\033[32m(ง •_•)ง =>\033[0m done!')
 
 

@@ -1,5 +1,5 @@
 # coding: utf-8
 
-class resourcesConfig(object):
+#{=> resources|config <=}
 
     RESOURCES_PAGINATION_PERPAGE = 0
