@@ -1,13 +1,17 @@
 # coding: utf-8
 
 from apis import db
-from .. import resources
-from ..models import Resources
+#from .. import resources
+#{==> resources_blueprint_import <==}
+#from ..models import Resources
+#{==> resources_model_import_as <==}
 from flask import jsonify, request
 
 
-@resources.route('/<int:id>/', methods=['PATCH'])
-def update_resource(id):
+#@resources.route('/<int:id>/', methods=['PATCH'])
+#{==> resources_patch_route <==}
+#def update_resource(id):
+#{==> update_resource_function <==}
     if request.method == 'PATCH':
         json_data = request.get_json()
         resource = Resources.query.get_or_404(id)

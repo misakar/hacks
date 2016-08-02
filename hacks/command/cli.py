@@ -78,5 +78,40 @@ def boot():
     os.popen('python manage.py runserver --port 5486')
 
 
+@click.command()
+@click.argument('api_name')
+def generate():
+    resources = os.path.join(hacks_path, 'resources')
+    destination = os.path.join(os.getcwd(), 'apis/%s' % api_name)
+
+    if os.path.isdir(destination):
+        logger.warning(
+            '\033[31m{warning}\033[0m api'.format(warning="(╥﹏╥) => ")\
+            + ' \033[33m{path}\033[0m already exists.'.format(path=api_name)
+        )
+        return -1
+
+    _mkdir(destination)
+
+    for _dir, _dirs, _files in os.walk(resources):
+        relative = _dir.split(resources)[1].lstrip(os.path.sep)
+        destination_dir = os.path.join(destination, relative)
+
+        _mkdir(destination_dir)
+
+        for _file in _files:
+            resources_file = os.path.join(_dir, _file)
+            destination_file = os.path.join(destination_dir, _file)
+            if resources_file == os.path.join(hacks_path,
+                                              ''):
+                with open(resources_file, 'r') as api_init_file:
+                    with open(destination_file, 'w+') as dstapi_init_file:
+                        for line in api
+
+
+            shutil.copy(resources_file, destination_file)
+
+
 cli.add_command(new)
 cli.add_command(boot)
+cli.add_command(generate)

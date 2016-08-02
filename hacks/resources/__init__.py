@@ -3,7 +3,7 @@
 from flask import Blueprint
 
 
-resources = Blueprint('resources', __name__)
+#{==> initial_blueprint <==}
 
 
 from .routes import create, read, update, delete, search

@@ -4,9 +4,8 @@ from apis import db
 from datetime import datetime
 
 
-class Resources(db.Model):
+#{==> resources_model <==}
 
-    __tablename__ = 'resources'
     id = db.Column(db.Integer, primary_key=True)
     create_at = db.Column(db.DateTime, default=datetime.utcnow())
     age = db.Column(db.Integer)
