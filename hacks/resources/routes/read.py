@@ -1,16 +1,12 @@
 # coding: utf-8
 
 import json
-#from .. import resources
 #{=> resources|blueprint|import <=}
 from flask import jsonify, request, current_app
-#from ..models import Resources
 #{=> resources|model|import_as <=}
 
 
-#@resources.route('/', methods=['GET'])
 #{=> resources_get|route <=}
-#def get_resources():
 #{=> get_resources|function <=}
     resources = Resources.query.all()
 
@@ -31,9 +27,7 @@ from flask import jsonify, request, current_app
         ), 200
 
 
-#@resources.route('/<int:id>/', methods=['GET'])
 #{=> resource_get|route <==}
-#def get_id_resources(id):
 #{=> get_id_resources|function <=}
     resource = Resources.query.get_or_404(id)
     return jsonify(resource.to_json()), 200

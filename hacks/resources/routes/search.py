@@ -1,16 +1,12 @@
 # coding: utf-8
 
 import json
-#from .. import resources
 #{=> resources|blueprint|import <=}
-#from ..models import Resources
 #{=> resources|model|import_as <=}
 from flask import request, jsonify
 
 
-#@resources.route('/search/')
 #{=> resources_search|route <=}
-#def search_resources():
 #{=> search_resources|function <=}
     except_results = []
     search_results = []

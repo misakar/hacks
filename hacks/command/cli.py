@@ -79,19 +79,21 @@ def boot():
 
 
 @click.command()
-@click.argument('api_name')
-def generate():
+@click.option('-api', nargs=1)
+def generate(api):
     resources = os.path.join(hacks_path, 'resources')
-    destination = os.path.join(os.getcwd(), 'apis/%s' % api_name)
+    destination = os.path.join(os.getcwd(), 'apis/%s' % api)
 
     if os.path.isdir(destination):
         logger.warning(
             '\033[31m{warning}\033[0m api'.format(warning="(╥﹏╥) => ")\
-            + ' \033[33m{path}\033[0m already exists.'.format(path=api_name)
+            + ' \033[33m{path}\033[0m already exists.'.format(path=api)
         )
         return -1
 
     _mkdir(destination)
+
+    # logger.info('\033[32m(ง •_•)ง =>\033[0m start a hacks api.')
 
     for _dir, _dirs, _files in os.walk(resources):
         relative = _dir.split(resources)[1].lstrip(os.path.sep)
@@ -102,15 +104,64 @@ def generate():
         for _file in _files:
             resources_file = os.path.join(_dir, _file)
             destination_file = os.path.join(destination_dir, _file)
-            if resources_file == os.path.join(hacks_path,
-                                              'resources/models.py'):
-                with open(resources_file, 'r') as api_init_file:
-                    with open(destination_file, 'w+') as dstapi_init_file:
-                        for line in api_init_file:
-                            new_line = line.replace('#{==> resources_model <==}')
+            with open(resources_file, 'r') as api_init_file:
+                with open(destination_file, 'w+') as dstapi_init_file:
+                    for line in api_init_file:
+                        new_line = line \
+                            .replace('#{=> resources|model <=}',
+                                     'class {ModelName}(db.Model):' \
+                                .format(ModelName=api[:-1].capitalize())) \
+                            .replace('#{=> initial|blueprint <=}',
+                                     '{bp} = Blueprint("{bp}", __name__)' \
+                                .format(bp=api)) \
+                            .replace('#{=> resources|blueprint|import <=}',
+                                     'from .. import {bp}' \
+                                .format(bp=api)) \
+                            .replace('#{=> resources|model|import_as <=}',
+                                     'from ..models import {ModelName} as Resources' \
+                                .format(ModelName=api[:-1].capitalize())) \
+                            .replace('#{=> resources_post|route <=}',
+                                     "@{bp}.route('/', methods=['POST'])" \
+                                .format(bp=api)) \
+                            .replace('#{=> new_resource|function <=}}',
+                                     "def new_{bp}():" \
+                                .format(bp=api)) \
+                            .replace('#{=> resources_delete|route <=}',
+                                     "@{bp}.route('/<int:id>/', methods=['DELETE'])" \
+                                .format(bp=api)) \
+                            .replace('#{=> delete_resource|function <=}',
+                                     "def delete_{bp}(id):" \
+                                .format(bp=api)) \
+                            .replace('#{=> resources_get|route <=}',
+                                     "@{bp}.route('/', methods=['GET'])" \
+                                .format(bp=api)) \
+                            .replace('#{=> get_resources|function <=}',
+                                     "def get_{bp}():" \
+                                .format(bp=api)) \
+                            .replace('#{=> resource_get|route <==}',
+                                     "@{bp}.route('/<int:id>/', methods=['GET'])" \
+                                .format(bp=api)) \
+                            .replace('#{=> get_id_resources|function <=}',
+                                     "def get_id_{bp}(id):" \
+                                .format(bp=api)) \
+                            .replace('#{=> resources_search|route <=}',
+                                     "@{bp}.route('/search/')" \
+                                .format(bp=api)) \
+                            .replace('#{=> search_resources|function <=}',
+                                     "def search_{bp}():" \
+                                .format(bp=api)) \
+                            .replace('#{=> resources_patch|route <=}',
+                                     "@{bp}.route('/<int:id>/', methods=['PATCH'])" \
+                                .format(bp=api)) \
+                            .replace('#{=> update_resource|function <=}',
+                                     "def update_{bp}(id):" \
+                                .format(bp=api)) \
 
+                        dstapi_init_file.write(new_line)
 
-            shutil.copy(resources_file, destination_file)
+    # logger.info('\033[32m(ง •_•)ง =>\033[0m register api blueprint.')
+    # logger.info('\033[32m(ง •_•)ง =>\033[0m setup api config.')
+    # logger.info('\033[32m(ง •_•)ง =>\033[0m done!')
 
 
 cli.add_command(new)
