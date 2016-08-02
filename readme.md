@@ -7,11 +7,10 @@ dead simple restful api framework
 <code>$ hack new demoAPI</code>
 
 ### Generate restful api
-(example for user resource) <br/>
 <code>$ hack generate api users</code>
 
 ## $ Enjoy Your API:)
-(example for user resource)
+(example for users resource)
 ### Start
 
     $ hack boot
@@ -43,6 +42,7 @@ recommended [postman app](https://chrome.google.com/webstore/detail/postman/fhbj
 **DELETE** ```http://localhost:5486/api/users/<int:id>/``` <br/>
 
 ### Pagination
+pagination setting at ```apis/configs/usersConfig.py``` <br/>
 **GET** ```http://localhost:5486/api/users/?page=2```
 
 ### Search
@@ -71,7 +71,7 @@ the latest table structure.
     $ hack migrate
 
 ## $ Learn More Hacks
-Hacks based on flask and flask plugins
+Hacks hacking on top of flask and flask plugins
 
 + [flask website](http://flask.pocoo.org/)
 + [flask plugins](http://flask.pocoo.org/extensions/)
