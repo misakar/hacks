@@ -3,16 +3,16 @@
 import json
 from apis import db
 #from .. import resources
-#{==> resources_blueprint_import <==}
+#{=> resources|blueprint|import <=}
 #from ..models import Resources
-#{==> resources_model_import_as <==}
+#{=> resources|model|import_as <=}
 from flask import request
 
 
 #@resources.route('/', methods=['POST'])
-#{==> resources_post_route <==}
+#{=> resources_post|route <=}
 #def new_resource():
-#{==> new_resource_function <==}}
+#{=> new_resource|function <=}}
     kwargs = {}
     if request.method == 'POST':
         json_data = request.get_json()

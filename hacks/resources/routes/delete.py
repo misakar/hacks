@@ -2,16 +2,16 @@
 
 from apis import db
 #from .. import resources
-#{==> resources_blueprint_import <==}
+#{=> resources|blueprint|import <=}
 #from ..models import Resources
-#{==> resources_model_import_as <==}
+#{=> resources|model|import_as <=}
 from flask import jsonify, request
 
 
 #@resources.route('/<int:id>/', methods=['DELETE'])
-#{==> resources_delete_route <==}
+#{=> resources_delete|route <=}
 #def delete_resource(id):
-#{==> delete_resource_function <==}
+#{=> delete_resource|function <=}
     if request.method == 'DELETE':
         resource = Resources.query.get_or_404(id)
         db.session.delete(resource)

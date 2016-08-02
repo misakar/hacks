@@ -4,7 +4,7 @@ from apis import db
 from datetime import datetime
 
 
-#{==> resources_model <==}
+#{=> resources|model <=}
 
     id = db.Column(db.Integer, primary_key=True)
     create_at = db.Column(db.DateTime, default=datetime.utcnow())

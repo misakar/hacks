@@ -103,10 +103,11 @@ def generate():
             resources_file = os.path.join(_dir, _file)
             destination_file = os.path.join(destination_dir, _file)
             if resources_file == os.path.join(hacks_path,
-                                              ''):
+                                              'resources/models.py'):
                 with open(resources_file, 'r') as api_init_file:
                     with open(destination_file, 'w+') as dstapi_init_file:
-                        for line in api
+                        for line in api_init_file:
+                            new_line = line.replace('#{==> resources_model <==}')
 
 
             shutil.copy(resources_file, destination_file)

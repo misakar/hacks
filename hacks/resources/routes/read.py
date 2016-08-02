@@ -2,16 +2,16 @@
 
 import json
 #from .. import resources
-#{==> resources_blueprint_import <==}
+#{=> resources|blueprint|import <=}
 from flask import jsonify, request, current_app
 #from ..models import Resources
-#{==> resources_model_import_as <==}
+#{=> resources|model|import_as <=}
 
 
 #@resources.route('/', methods=['GET'])
-#{==> resources_get_route <==}
+#{=> resources_get|route <=}
 #def get_resources():
-#{==> get_resources_function <==}
+#{=> get_resources|function <=}
     resources = Resources.query.all()
 
     page = request.args.get('page') or '1'
@@ -32,8 +32,8 @@ from flask import jsonify, request, current_app
 
 
 #@resources.route('/<int:id>/', methods=['GET'])
-#{==> resource_get_route <==}
+#{=> resource_get|route <==}
 #def get_id_resources(id):
-#{==> get_id_resources_function <==}
+#{=> get_id_resources|function <=}
     resource = Resources.query.get_or_404(id)
     return jsonify(resource.to_json()), 200

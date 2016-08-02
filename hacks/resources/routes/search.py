@@ -2,16 +2,16 @@
 
 import json
 #from .. import resources
-#{==> resources_blueprint_import <==}
+#{=> resources|blueprint|import <=}
 #from ..models import Resources
-#{==> resources_model_import_as <==}
+#{=> resources|model|import_as <=}
 from flask import request, jsonify
 
 
 #@resources.route('/search/')
-#{==> resources_search_route <==}
+#{=> resources_search|route <=}
 #def search_resources():
-#{==> search_resources_function <==}
+#{=> search_resources|function <=}
     except_results = []
     search_results = []
     search_args = request.args
