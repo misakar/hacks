@@ -8,7 +8,7 @@ apis_path = path.abspath(path.join(path.dirname(__file__), '..'))
 project_path = path.abspath(path.join(apis_path, '..'))
 
 
-class Config(object):
+class hacksConfig(object):
 
     SECRET_KEY = os.getenv('SECRET_KEY') or 'hacking SECRET_KEY...'
     # APPLICATION_ROOT = '/api'

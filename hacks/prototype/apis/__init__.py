@@ -2,8 +2,8 @@
 
 from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
-# from config import config
 from configs.resourcesConfig import resourcesConfig
+#{{ import_configs }}
 
 
 db = SQLAlchemy()
@@ -22,6 +22,7 @@ def create_api(configs=[], main=True):
 
     from .resources import resources
     api.register_blueprint(resources, url_prefix='/api/resources')
+    #{{ register_blueprint }}
 
     return api
 

@@ -4,3 +4,4 @@ hacks/prototype/defaultDB.sqlite
 venv/
 hacks/prototype/restenv/
 hacks/prototype/migrations/
+hacks.egg-info/
