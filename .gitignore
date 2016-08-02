@@ -1,6 +1,7 @@
 **/*.pyc
 hacks/prototype/defaultDB.sqlite
 
+demo/
 venv/
 hacks/prototype/restenv/
 hacks/prototype/migrations/

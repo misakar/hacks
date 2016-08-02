@@ -1,8 +1,5 @@
 # coding: utf-8
 
-from .hacksConfig import hacksConfig
-
-
-class resourcesConfig(hacksConfig):
+class resourcesConfig(object):
 
     RESOURCES_PAGINATION_PERPAGE = 0
