@@ -1,20 +1,16 @@
 {
     "configs": {
+        "name": #{=> resources|name <=},
         "columns": {
-            "age": [
-                "Integer"
-            ], 
             "name": [
                 "String(164)"
             ]
         }, 
         "fromjson": [
-            "name", 
-            "age"
+            "name"
         ], 
         "views": [
-            "name",
-            "age"
+            "name"
         ]
     }
 }

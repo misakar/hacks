@@ -7,6 +7,7 @@ def generateModels(config_json_path, models_path):
     with open(config_json_path, 'r') as f:
         data = json.load(f)
 
+    resources_name = data['configs']["name"]
     _column_code = []; _init_code = []; _json_code = []
 
     for (_column, _type) in data["configs"]["columns"].iteritems():
@@ -57,7 +58,7 @@ from apis import db
 from datetime import datetime
 
 
-class Resources(db.Model):
+class %s(db.Model):
 
     __tablename__ = 'resources'
     id = db.Column(db.Integer, primary_key=True)
@@ -73,8 +74,8 @@ class Resources(db.Model):
             'create_at': self.create_at.strftime("%s"),
 %s
         }
-""" % ('\n'.join(_column_code),'\n'.join(_init_code), "%Y-%m-%d %H:%M:%S",
-       '\n'.join(_json_code))
+""" % (resources_name[:-1].capitalize(), '\n'.join(_column_code),
+       '\n'.join(_init_code), "%Y-%m-%d %H:%M:%S", '\n'.join(_json_code))
 
     with open(models_path, 'w+') as f:
         f.write(_models_code)

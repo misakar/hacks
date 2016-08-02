@@ -58,7 +58,9 @@ def new(project_name):
 
     subprocess.check_call('virtualenv apivenv', shell=True)
     pip = os.path.join(destination, 'apivenv/bin/pip')
+    python = os.path.join(destination, 'apivenv/bin/python')
     requirements = os.path.join(destination, 'requirements.txt')
+    manage_py = os.path.join(destination, 'manage.py')
     subprocess.Popen([pip, 'install', '-r', requirements]).wait()
 
     logger.info('\033[32m(ง •_•)ง =>\033[0m setup basic config.')
@@ -73,6 +75,11 @@ def new(project_name):
     _mkdir(destinationConfig)
     shutil.copy(hacksConfig_path, destinationConfig_path)
     shutil.copy(hacksConfig_init, destinationConfig_init)
+
+    logger.info('\033[32m(ง •_•)ง =>\033[0m setup database migration.')
+    subprocess.Popen([python, manage_py, 'db', 'init']).wait()
+    subprocess.Popen([python, manage_py, 'db', 'migrate']).wait()
+    subprocess.Popen([python, manage_py, 'db', 'upgrade']).wait()
 
     logger.info('\033[32m(ง •_•)ง =>\033[0m done!')
 
@@ -160,14 +167,15 @@ def generate(api):
                             .replace('#{=> update_resource|function <=}',
                                      "def update_{bp}(id):" \
                                 .format(bp=api)) \
+                            .replace('#{=> resources|name <=}', "%s" % api)
 
                         dstapi_init_file.write(new_line)
 
     data = {'bp': api}
     # logger.info('\033[32m(ง •_•)ง =>\033[0m setup api config.')
-    resourceConfig = os.path.join(hacks_path, 'configs/resourceConfig.py')
-    dstConfig = os.path.join(os.path.getcwd, 'apis/configs/%sConfig.py' % api)
-    with open(resourceConfig, 'r') as rescs_cfg_file:
+    resourcesConfig = os.path.join(hacks_path, 'configs/resourcesConfig.py')
+    dstConfig = os.path.join(os.getcwd(), 'apis/configs/%sConfig.py' % api)
+    with open(resourcesConfig, 'r') as rescs_cfg_file:
         with open(dstConfig, 'w+') as dst_cfg_file:
             for line in rescs_cfg_file:
                 new_line = line.replace('#{=> resources|config <=}',
@@ -194,6 +202,13 @@ def generate(api):
     # logger.info('\033[32m(ง •_•)ง =>\033[0m done!')
 
 
+@click.command()
+def migrate():
+    os.popen('python manage.py db migrate')
+    os.popen('python manage.py db upgrade')
+
+
 cli.add_command(new)
 cli.add_command(boot)
 cli.add_command(generate)
+cli.add_command(migrate)

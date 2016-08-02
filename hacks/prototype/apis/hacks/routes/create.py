@@ -10,11 +10,11 @@ from apis.functions import findResources, updateJson, generateModels
 def create_field():
     apis_path = current_app.config['APIS_PATH']
     rescs_list = findResources(apis_path)
-    config_json_path = os.path.join(apis_path, '%s/config.json' % rescs)
-    models_path = os.path.join(apis_path, '%s/models.py' % rescs)
 
     if request.method == 'POST':
         rescs = request.args.get('rescs')
+        config_json_path = os.path.join(apis_path, '%s/config.json' % rescs)
+        models_path = os.path.join(apis_path, '%s/models.py' % rescs)
         field_name = request.get_json().get('field')
         field_type = request.get_json().get('type')
         if rescs in rescs_list:
