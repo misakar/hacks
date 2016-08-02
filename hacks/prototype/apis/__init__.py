@@ -25,6 +25,6 @@ def create_api(configs=[], main=True):
     return api
 
 
-configs = []
+configs = [hacksConfig]
 #{{ configs_append }}
 api = create_api(configs)
