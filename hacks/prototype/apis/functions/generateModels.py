@@ -60,7 +60,6 @@ from datetime import datetime
 
 class %s(db.Model):
 
-    __tablename__ = 'resources'
     id = db.Column(db.Integer, primary_key=True)
     create_at = db.Column(db.DateTime, default=datetime.utcnow())
 %s
