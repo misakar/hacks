@@ -104,6 +104,7 @@ def new(project_name):
 @click.command()
 @run_in_root
 def boot():
+    os.popen('hack migrate')
     os.popen('python manage.py runserver --port 5486')
 
 
