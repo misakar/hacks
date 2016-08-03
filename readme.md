@@ -9,6 +9,9 @@ dead simple restful api framework
 ### Generate restful api
 <code>$ hack generate api users</code>
 
+### Videos
++ ![hacks framework](https://www.youtube.com/watch?v=aimpIJjk824)
+
 ## $ Enjoy Your API:)
 (example for users resource)
 ### Start
