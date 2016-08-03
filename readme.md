@@ -10,7 +10,7 @@ dead simple restful api framework
 <code>$ hack generate api users</code>
 
 ### Videos
-+ ![hacks framework](https://www.youtube.com/watch?v=aimpIJjk824)
++ [hacks framework](https://www.youtube.com/watch?v=aimpIJjk824)
 
 ## $ Enjoy Your API:)
 (example for users resource)
