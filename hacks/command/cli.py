@@ -34,7 +34,7 @@ def run_in_root(f):
             return -1
         else:
             f(*args, **kwargs)
-        return decorator
+    return decorator
 
 
 @click.group()
@@ -102,12 +102,14 @@ def new(project_name):
 
 
 @click.command()
+@run_in_root
 def boot():
     os.popen('python manage.py runserver --port 5486')
 
 
 @click.command()
 @click.option('-api', nargs=1)
+@run_in_root
 def generate(api):
     resources = os.path.join(hacks_path, 'resources')
     destination = os.path.join(os.getcwd(), 'apis/%s' % api)
@@ -220,6 +222,7 @@ def generate(api):
 
 
 @click.command()
+@run_in_root
 def migrate():
     os.popen('python manage.py db migrate')
     os.popen('python manage.py db upgrade')
