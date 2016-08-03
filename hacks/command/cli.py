@@ -5,6 +5,7 @@ import shutil
 import click
 import logging
 import subprocess
+import functools
 
 from logging import StreamHandler, DEBUG
 from functions import _mkdir
@@ -18,6 +19,22 @@ logger.setLevel(DEBUG)
 logger.addHandler(StreamHandler())
 
 hacks_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+
+def run_in_root(f):
+    @functools.wraps(f)
+    def decorator(*args, **kwargs):
+        path = os.getcwd()
+        dot_hacks_path = os.path.join(path, '.hacks')
+        if not os.path.isfile(dot_hacks_path):
+            logger.warning(
+                '\033[31m{warning}\033[0m run command under project root path!' \
+                .format(warning="(╥﹏╥) => ")
+            )
+            return -1
+        else:
+            f(*args, **kwargs)
+        return decorator
 
 
 @click.group()
