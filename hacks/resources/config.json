@@ -1,6 +1,6 @@
 {
     "configs": {
-        "name": #{=> resources|name <=},
+        "name": "#{=> resources|name <=}",
         "columns": {
             "name": [
                 "String(164)"

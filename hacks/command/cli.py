@@ -187,7 +187,7 @@ def generate(api):
                             .replace('#{=> update_resource|function <=}',
                                      "def update_{bp}(id):" \
                                 .format(bp=api)) \
-                            .replace('#{=> resources|name <=}', "%s" % api)
+                            .replace('#{=> resources|name <=}', api)
 
                         dstapi_init_file.write(new_line)
 
