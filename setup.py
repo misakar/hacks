@@ -1,10 +1,16 @@
 # encoding: utf-8
 
-from setuptools import setup, find_packages
+import re
+import ast
 import hacks.command
+from setuptools import setup, find_packages
 
 # version
-version = '0.10'
+_version_re = re.compile(r'__version__\s+=\s+(.*)')
+
+with open('hacks/__init__.py', 'rb') as f:
+    version = str(ast.literal_eval(_version_re.search(
+        f.read().decode('utf-8')).group(1)))
 
 
 # entry_points
@@ -18,7 +24,8 @@ entry_points = {
 setup(
     name='hacks',
     version=version,
-    packages=find_packages(),
+    include_package_data=True,
+    packages=find_packages(),  # .gitignore
     url='https://github.com/neo1218/hacks',
     license='MIT',
     author='neo1218',
@@ -26,7 +33,6 @@ setup(
     description='dead simple api framework',
     long_description=__doc__,
     zip_safe=False,
-    include_package_data=True,
     platforms='any',
     install_requires=[
         'click',
