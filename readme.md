@@ -1,6 +1,7 @@
 # ```$_Hacks```
 
-dead simple restful api framework
+dead simple restful api framework.
+in development
 
 ## $ Get Start
 ### New a project
@@ -12,6 +13,7 @@ dead simple restful api framework
 ### Videos
 + [hacks framework](https://www.youtube.com/watch?v=aimpIJjk824)
 
+<hr>
 ## $ Enjoy Your API:)
 (example for users resource)
 ### Start
@@ -51,6 +53,7 @@ pagination setting at ```apis/configs/usersConfig.py``` <br/>
 ### Search
 **GET** ```http://localhost:5486/api/users/?<field1>=<value1>&<field2>=<field2>```
 
+<hr>
 ## $ Hack Your API
 you can custom your api by adding/deleting field: <br/>
 **add a new field** <br/>
@@ -73,12 +76,14 @@ the latest table structure.
 
     $ hack migrate
 
+<hr>
 ## $ Learn More Hacks
 Hacks hacking on top of flask and flask plugins
 
 + [flask website](http://flask.pocoo.org/)
 + [flask plugins](http://flask.pocoo.org/extensions/)
 
+<hr>
 ## $ Notes
 Currently, Hacks simply generate a **prototype api**, which means the api **did
 not** have: 
@@ -95,5 +100,12 @@ and obviously, it ***not ready to go into production***;
 But, I will continue to feed more on Hacks, and finally let Hacks become a
 **production-oriented**  but **deadly simple** restful api framework.
 
+<hr>
+## $ Todo
++ [ ] user side config
+    + [ ] blueprint config
+    + [ ] resource api config
+
+<hr>
 ## $ LICENSE
 MIT, check LICENSE file for detail
