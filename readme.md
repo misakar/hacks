@@ -102,9 +102,11 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 
 <hr>
 ## $ Todo
-+ [ ] user side config
-    + [ ] blueprint config
-    + [ ] resource api config
++ [ ] integrated the [pony orm](https://github.com/ponyorm/pony)
++ [ ] build api resources relationship
++ [ ] configurations
+    + [ ] restful api config
+    + [ ] resource bp config
 
 <hr>
 ## $ LICENSE

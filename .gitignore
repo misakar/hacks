@@ -1,6 +1,7 @@
 **/*.pyc
 hacks/prototype/defaultDB.sqlite
 
+ideaWork/
 demo/
 venv/
 hacks/prototype/restenv/
