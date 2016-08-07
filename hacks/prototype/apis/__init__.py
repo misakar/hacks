@@ -1,12 +1,12 @@
 # coding: utf-8
 
 from flask import Flask, url_for
-from flask_sqlalchemy import SQLAlchemy
+from pony import orm
 from configs.hacksConfig import hacksConfig
 #{=> configs|import <=}
 
 
-db = SQLAlchemy()
+db = orm.Database()
 
 
 def create_api(configs=[], main=True):
@@ -14,8 +14,6 @@ def create_api(configs=[], main=True):
 
     for config in configs:
         api.config.from_object(config)
-
-    db.init_app(api)
 
     from .hacks import hacks
     api.register_blueprint(hacks, url_prefix='/api')

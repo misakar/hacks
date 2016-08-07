@@ -1,22 +1,21 @@
 # coding: utf-8
 
 import json
-from apis import db
-#{=> resources|blueprint|import <=}
-#{=> resources|model|import_as <=}
+from apis import db, orm
+from .. import users
+from ..models import User as Resources
 from flask import request
 
 
-#{=> resources_post|route <=}
-#{=> new_resource|function <=}}
+@users.route('/', methods=['POST'])
+def new_users():
     kwargs = {}
     if request.method == 'POST':
         json_data = request.get_json()
-        for (_field, _value) in json_data.iteritems():
-            kwargs[_field] = _value
-        resource = Resources(kwargs)
-        db.session.add(resource)
-        db.session.commit()
+        with orm.db_session:
+            for (_field, _value) in json_data.iteritems():
+                kwargs[_field] = _value
+            resource = Resources(**kwargs)
         return json.dumps(
             {
                 'msg': 'create resource',

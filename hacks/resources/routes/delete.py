@@ -1,17 +1,17 @@
 # coding: utf-8
 
-from apis import db
-#{=> resources|blueprint|import <=}
-#{=> resources|model|import_as <=}
+from apis import db, orm
+from .. import users
+from ..models import User as Resources
 from flask import jsonify, request
 
 
-#{=> resources_delete|route <=}
-#{=> delete_resource|function <=}
+@users.route('/<int:id>/', methods=['DELETE'])
+def delete_users(id):
     if request.method == 'DELETE':
-        resource = Resources.query.get_or_404(id)
-        db.session.delete(resource)
-        db.session.commit()
+        with orm.db_session:
+            resource = orm.get(r for r in Resources if r.id == id)
+            resource.delete()
         return jsonify(
             {
                 'msg': 'delete resource',

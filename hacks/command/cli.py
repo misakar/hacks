@@ -55,7 +55,7 @@ def new(project_name):
         )
         return -1
 
-    logger.info('\033[32m(ง •_•)ง =>\033[0m start a hacks project.')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m start a hacks project.')
 
     _mkdir(destination)
 
@@ -71,7 +71,7 @@ def new(project_name):
             shutil.copy(prototype_file, destination_file)
 
     os.chdir(destination)
-    logger.info('\033[32m(ง •_•)ง =>\033[0m initial api virtual environment.')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m initial api virtual environment.')
 
     subprocess.check_call('virtualenv apivenv', shell=True)
     pip = os.path.join(destination, 'apivenv/bin/pip')
@@ -80,31 +80,29 @@ def new(project_name):
     manage_py = os.path.join(destination, 'manage.py')
     subprocess.Popen([pip, 'install', '-r', requirements]).wait()
 
-    logger.info('\033[32m(ง •_•)ง =>\033[0m setup basic config.')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m setup basic config.')
 
     hacksConfig_init = os.path.join(hacks_path, 'configs/__init__.py')
     hacksConfig_path = os.path.join(hacks_path, 'configs/hacksConfig.py')
+    connection_file  = os.path.join(hacks_path, 'configs/connection.py')
 
-    destinationConfig = os.path.join(destination, 'apis/configs')
+    destinationConfig      = os.path.join(destination, 'apis/configs')
     destinationConfig_path = os.path.join(destinationConfig, 'hacksConfig.py')
     destinationConfig_init = os.path.join(destinationConfig, '__init__.py')
+    destin_connetcion      = os.path.join(destinationConfig, 'connection.py' )
 
     _mkdir(destinationConfig)
     shutil.copy(hacksConfig_path, destinationConfig_path)
     shutil.copy(hacksConfig_init, destinationConfig_init)
+    shutil.copy(connection_file, destin_connetcion)
 
-    logger.info('\033[32m(ง •_•)ง =>\033[0m setup database migration.')
-    subprocess.Popen([python, manage_py, 'db', 'init']).wait()
-    subprocess.Popen([python, manage_py, 'db', 'migrate']).wait()
-    subprocess.Popen([python, manage_py, 'db', 'upgrade']).wait()
-
-    logger.info('\033[32m(ง •_•)ง =>\033[0m done!')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m done!')
 
 
 @click.command()
 @run_in_root
 def boot():
-    os.popen('hack migrate')
+    # os.popen('hack migrate')
     os.popen('python manage.py runserver --port 5486')
 
 
@@ -124,7 +122,7 @@ def generate(api):
 
     _mkdir(destination)
 
-    # logger.info('\033[32m(ง •_•)ง =>\033[0m start a hacks api.')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m start a hacks api.')
 
     for _dir, _dirs, _files in os.walk(resources):
         relative = _dir.split(resources)[1].lstrip(os.path.sep)
@@ -187,12 +185,14 @@ def generate(api):
                             .replace('#{=> update_resource|function <=}',
                                      "def update_{bp}(id):" \
                                 .format(bp=api)) \
-                            .replace('#{=> resources|name <=}', api)
+                            .replace('#{=> resources|name <=}',
+                                     "{bp}" \
+                                .format(bp=api))
 
                         dstapi_init_file.write(new_line)
 
     data = {'bp': api}
-    # logger.info('\033[32m(ง •_•)ง =>\033[0m setup api config.')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m setup api config.')
     resourcesConfig = os.path.join(hacks_path, 'configs/resourcesConfig.py')
     dstConfig = os.path.join(os.getcwd(), 'apis/configs/%sConfig.py' % api)
     with open(resourcesConfig, 'r') as rescs_cfg_file:
@@ -202,7 +202,7 @@ def generate(api):
                         "class %(bp)sConfig(object):" % data)
                 dst_cfg_file.write(new_line)
 
-    # logger.info('\033[32m(ง •_•)ง =>\033[0m register api blueprint.')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m register api blueprint.')
     hacks_init_file = os.path.join(os.getcwd(), 'apis/__init__.py')
     hacks_init_temp_file = os.path.join(os.getcwd(), 'apis/init_temp.py')
     with open(hacks_init_file, 'r') as init_file:
@@ -219,7 +219,7 @@ def generate(api):
     shutil.copy(hacks_init_temp_file, hacks_init_file)
     os.remove(hacks_init_temp_file)
 
-    # logger.info('\033[32m(ง •_•)ง =>\033[0m done!')
+    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m done!')
 
 
 @click.command()
