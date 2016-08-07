@@ -1,14 +1,16 @@
 # coding: utf-8
 
 import json
-#{=> resources|blueprint|import <=}
+from apis import orm
+from .. import users
 from flask import jsonify, request, current_app
-#{=> resources|model|import_as <=}
+from ..models import User as Resources
 
 
-#{=> resources_get|route <=}
-#{=> get_resources|function <=}
-    resources = Resources.query.all()
+@users.route('/', methods=['GET'])
+def get_users():
+    with orm.db_session:
+        resources = orm.select(r for r in Resources)[:]
 
     page = request.args.get('page') or '1'
     current_page = int(page)
@@ -27,7 +29,8 @@ from flask import jsonify, request, current_app
         ), 200
 
 
-#{=> resource_get|route <==}
-#{=> get_id_resources|function <=}
-    resource = Resources.query.get_or_404(id)
+@users.route('/<int:id>/', methods=['GET'])
+def get_id_users(id):
+    with orm.db_session:
+        resource = orm.get(r for r in Resources if r.id == id)
     return jsonify(resource.to_json()), 200

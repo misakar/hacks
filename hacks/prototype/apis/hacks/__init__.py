@@ -13,7 +13,7 @@ def index():
     _resource_dict = {'root': url_for('hacks.index')}
     _resource_list = findResources(current_app.config['APIS_PATH'])
     for _resource in _resource_list:
-        _resource_dict[_resource] = '/api/{}'.format(_resource)
+        _resource_dict[_resource] = '/api/{}/'.format(_resource)
     return jsonify(
         {
             'hacks': {

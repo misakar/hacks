@@ -1,20 +1,22 @@
 # coding: utf-8
 
 import json
-#{=> resources|blueprint|import <=}
-#{=> resources|model|import_as <=}
+from apis import orm
+from .. import users
+from ..models import User as Resources
 from flask import request, jsonify
 
 
-#{=> resources_search|route <=}
-#{=> search_resources|function <=}
+@users.route('/search/')
+def search_users():
     except_results = []
     search_results = []
     search_args = request.args
-    resources = Resources.query.all()
+    with orm.db_session:
+        resources = orm.select(r for r in Resources)[:]
 
     for _field in search_args.keys():
-        if not hasattr(Resources.query.first(), _field):
+        if not hasattr(Resources, _field):
             return jsonify(
                 { 'msg': 'can not find field %s' % _field }
             ), 400
