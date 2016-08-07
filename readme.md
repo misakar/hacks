@@ -102,7 +102,7 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 
 <hr>
 ## $ Todo
-+ [ ] integrated the [pony orm](https://github.com/ponyorm/pony)
++ [x] integrated the [pony orm](https://github.com/ponyorm/pony)
 + [ ] build api resources relationship
 + [ ] configurations
     + [ ] restful api config
