@@ -5,21 +5,24 @@ for modern back-end web development of your dreams <br/>
 
 ## $ Features
 ### Restful api all the things !
-1.[what is rest ?](http://www.restapitutorial.com/lessons/whatisrest.html) <br/>
-2.**how hacks do ?** <br/>
-each time you run ***hack generate -api resources***, this is going to implement a full crud restful api for resources as well as search and pagination stuff! <br/>
-thanks to [pony orm](https://github.com/ponyorm/pony) flexible **Set** syntax, you can easily add one-to-many(many-to-many) relationships and hacks will **automatically generate relationship apis between resources**! <br/>
+1. [what is rest ?](http://www.restapitutorial.com/lessons/whatisrest.html)
+2. **how hacks do ?** <br>
+each time you run ***hack generate -api resources***, this is going to implement a full crud restful api for resources as well as search and pagination stuff!
+thanks to [pony orm](https://github.com/ponyorm/pony) flexible **Set** syntax, you can easily add one-to-many(many-to-many) relationships and hacks will **automatically generate relationship apis between resources**!
 
 ### Real time back-end service via websocket
 
 ### Flexible api configuration
 
 ### Hacking on top of flask
-[flask](http://flask.pocoo.org/) is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. <br/>
++ [flask](http://flask.pocoo.org/) is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. <br/>
 well, hacks is built on top of flask! so feel free to use any great flask extensions !
+
+### Great DRY idea
 
 ### Convention over configuration
 
+<hr>
 ## $ Get Start
 ### New a project
 <code>$ hack new demoAPI</code>
