@@ -1,7 +1,24 @@
 # ```$_Hacks```
 
-dead simple restful api framework.
-in development
+dead simple but flexible restful api framework, <br/>
+for modern back-end web development of your dreams <br/>
+
+## $ Features
+### Restful api all the things !
+1.[what is rest ?](http://www.restapitutorial.com/lessons/whatisrest.html) <br/>
+2.**how hacks do ?** <br/>
+each time you run ***hack generate -api resources***, this is going to implement a full crud restful api for resources as well as search and pagination stuff! <br/>
+thanks to [pony orm](https://github.com/ponyorm/pony) flexible **Set** syntax, you can easily add one-to-many(many-to-many) relationships and hacks will **automatically generate relationship apis between resources**! <br/>
+
+### Real time back-end service via websocket
+
+### Flexible api configuration
+
+### Hacking on top of flask
+[flask](http://flask.pocoo.org/) is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. <br/>
+well, hacks is built on top of flask! so feel free to use any great flask extensions !
+
+### Convention over configuration
 
 ## $ Get Start
 ### New a project
@@ -64,12 +81,37 @@ you can custom your api by adding/deleting field: <br/>
         "type": "String(164)"
     }
 
+**add relationship(ex: users and posts resource)** <br/>
+***one to many*** <br/>
+POST <code>http://localhost:5486/api/?rescs=users</code>
+
+    {
+        "field": "posts",
+        "type": "Set('Post')"
+    }
+
+***many to many*** <br/>
+POST <code>http://localhost:5486/api/?rescs=users</code>
+
+    {
+        "field": "posts",
+        "type": "Set('Post')"
+    }
+
+POST <code>http://localhost:5486/api/?rescs=posts</code>
+
+    {
+        "field": "users",
+        "type": "Set('User')"
+    }
+
 ***all field types:***
 
 + String(length)
 + Integer
 + Text
 + DateTime(default is utcnow)
++ Set
 
 after launch the POST request, you need to migrate and upgrade your database to
 the latest table structure.
@@ -77,21 +119,14 @@ the latest table structure.
     $ hack migrate
 
 <hr>
-## $ Learn More Hacks
-Hacks hacking on top of flask and flask plugins
-
-+ [flask website](http://flask.pocoo.org/)
-+ [flask plugins](http://flask.pocoo.org/extensions/)
-
-<hr>
 ## $ Notes
 Currently, Hacks simply generate a **prototype api**, which means the api **did
-not** have: 
+not** have:
 
 1. **authentication mechanism**
 2. **relationship between each api resource**,
 3. **rate limit**
-4. **http caching** 
+4. **http caching**
 5. **user side config**
 6. **invoke your own code**
 
