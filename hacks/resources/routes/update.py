@@ -1,13 +1,13 @@
 # coding: utf-8
 
 from apis import db, orm
-from .. import users
-from ..models import User as Resources
+#{=> resources|blueprint|import <=}
+#{=> resources|model|import_as <=}
 from flask import jsonify, request
 
 
-@users.route('/<int:id>/', methods=['PATCH'])
-def update_users(id):
+#{=> resources_patch|route <=}
+#{=> update_resource|function <=}
     if request.method == 'PATCH':
         json_data = request.get_json()
         with orm.db_session:

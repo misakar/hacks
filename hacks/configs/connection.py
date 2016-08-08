@@ -2,10 +2,7 @@
 
 import os.path as path
 from .. import db
-
-
-apis_path = path.abspath(path.join(path.dirname(__file__), '..'))
-project_path = path.abspath(path.join(apis_path, '..'))
+from .hacksConfig import project_path
 
 
 ## pony orm connection setting

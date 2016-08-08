@@ -2,13 +2,13 @@
 
 import json
 from apis import orm
-from .. import users
-from ..models import User as Resources
+#{=> resources|blueprint|import <=}
+#{=> resources|model|import_as <=}
 from flask import request, jsonify
 
 
-@users.route('/search/')
-def search_users():
+#{=> resources_search|route <=}
+#{=> search_resources|function <=}
     except_results = []
     search_results = []
     search_args = request.args

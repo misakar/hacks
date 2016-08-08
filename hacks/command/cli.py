@@ -138,7 +138,10 @@ def generate(api):
                     for line in api_init_file:
                         new_line = line \
                             .replace('#{=> resources|model <=}',
-                                     'class {ModelName}(db.Model):' \
+                                     'class {ModelName}(db.Entity):' \
+                                .format(ModelName=api[:-1].capitalize())) \
+                            .replace('#{=> resources|super|model <=}',
+                                     'super({ModelName}, self).__init__(**kwargs)' \
                                 .format(ModelName=api[:-1].capitalize())) \
                             .replace('#{=> initial|blueprint <=}',
                                      '{bp} = Blueprint("{bp}", __name__)' \
@@ -167,7 +170,7 @@ def generate(api):
                             .replace('#{=> get_resources|function <=}',
                                      "def get_{bp}():" \
                                 .format(bp=api)) \
-                            .replace('#{=> resource_get|route <==}',
+                            .replace('#{=> resource_get|route <=}',
                                      "@{bp}.route('/<int:id>/', methods=['GET'])" \
                                 .format(bp=api)) \
                             .replace('#{=> get_id_resources|function <=}',
