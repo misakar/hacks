@@ -2,13 +2,13 @@
 
 import json
 from apis import orm
-from .. import users
+#{=> resources|blueprint|import <=}
+#{=> resources|model|import_as <=}
 from flask import jsonify, request, current_app
-from ..models import User as Resources
 
 
-@users.route('/', methods=['GET'])
-def get_users():
+#{=> resources_get|route <=}
+#{=> get_resources|function <=}
     with orm.db_session:
         resources = orm.select(r for r in Resources)[:]
 
@@ -29,8 +29,8 @@ def get_users():
         ), 200
 
 
-@users.route('/<int:id>/', methods=['GET'])
-def get_id_users(id):
+#{=> resource_get|route <=}
+#{=> get_id_resources|function <=}
     with orm.db_session:
         resource = orm.get(r for r in Resources if r.id == id)
     return jsonify(resource.to_json()), 200
