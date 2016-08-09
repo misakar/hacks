@@ -145,10 +145,12 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 <hr>
 ## $ Todo
 + [x] integrated the [pony orm](https://github.com/ponyorm/pony)
++ [ ] add resources model mixin class
 + [ ] build api resources relationship
 + [ ] configurations
     + [ ] restful api config
     + [ ] resource bp config
++ [ ] authentication policy
 
 <hr>
 ## $ LICENSE
