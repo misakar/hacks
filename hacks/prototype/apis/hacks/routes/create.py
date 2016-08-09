@@ -3,7 +3,7 @@
 import os
 from flask import jsonify, request, current_app
 from apis.hacks import hacks
-from apis.functions import findResources, updateJson, generateModels
+from apis.utils import findResources, updateJson, generateModels
 
 
 @hacks.route('/', methods=['POST'])

@@ -28,6 +28,6 @@ from flask import request, jsonify
         if _resource not in except_results:
             search_results.append(_resource)
     return json.dumps(
-        [resource.to_json() for resource in search_results],
+        [resource.to_dict() for resource in search_results],
         indent=1, ensure_ascii=False
     ), 200

@@ -1,22 +1,42 @@
 # coding: utf-8
 
 from apis import db, orm
+from apis.utils import timestamp
+from flask import abort
 from datetime import datetime
 
 
-#{=> resources|model <=}
+class #{=> resources|model <=}(db.Entity):
 
-    id = orm.PrimaryKey(int, auto=True)    # auto generated
-    name = orm.Required(str, unique=True)  # must have value
+    id = orm.PrimaryKey(int, auto=True)
+    name = orm.Optional(str, unique=True)
     create_at = orm.Required(datetime, sql_default='CURRENT_TIMESTAMP')
+    update_at = orm.Required(datetime, sql_default='CURRENT_TIMESTAMP')
 
-    def __init__(self, **kwargs):
-        #{=> resources|super|model <=}
-        self.name = kwargs.get('name')
+    @staticmethod
+    def create(data):
+        resource = #{=> resources|model <=}()
+        resource.from_dict(data)
+        return resource
 
-    def to_json(self):
+    def from_dict(self, data):
+        """
+        import user data from a dictionary
+        """
+        for field in ['name']:
+            try:
+                setattr(#{=> resources|model <=}, field, data[field])
+                setattr(#{=> resources|model <=}, 'update_at', timestamp())
+            except KeyError:
+                abort(400)  # bad request
+
+    def to_dict(self):
+        """
+        export a user to a dictionary
+        """
         return {
             'id': self.id,
             'create_at': self.create_at.strftime("%Y-%m-%d %H:%M:%S"),
+            'update_at': self.update_at.strftime("%Y-%m-%d %H:%M:%S"),
             'name': self.name,
         }

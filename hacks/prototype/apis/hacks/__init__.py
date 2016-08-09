@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from flask import Blueprint, jsonify, url_for, current_app
-from apis.functions import findResources
+from apis.utils import findResources
 
 
 hacks = Blueprint('hacks', __name__)

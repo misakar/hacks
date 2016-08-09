@@ -4,7 +4,7 @@ import os
 from flask import url_for
 
 
-except_list = ['configs', 'decorators', 'functions', 'hacks']
+except_list = ['configs', 'decorators', 'utils', 'hacks']
 dir_list = []
 apis_list = []
 resources_list = []

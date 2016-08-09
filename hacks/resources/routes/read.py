@@ -18,13 +18,13 @@ from flask import jsonify, request, current_app
 
     if per_page != 0:
         return json.dumps(
-            [resource.to_json() for resource in \
+            [resource.to_dict() for resource in \
              resources[per_page*(current_page-1):per_page*current_page]],
             indent=1, ensure_ascii=False
         ), 200
     else:
         return json.dumps(
-            [resource.to_json() for resource in resources],
+            [resource.to_dict() for resource in resources],
             indent=1, ensure_ascii=False
         ), 200
 
@@ -33,4 +33,4 @@ from flask import jsonify, request, current_app
 #{=> get_id_resources|function <=}
     with orm.db_session:
         resource = orm.get(r for r in Resources if r.id == id)
-    return jsonify(resource.to_json()), 200
+    return jsonify(resource.to_dict()), 200
