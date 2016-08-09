@@ -21,7 +21,7 @@ def update_resources():
                 {
                     'msg': 'update %s models' % rescs
                 }
-            ), 204
+            ), 200
         else:
             return jsonify(
                 {
