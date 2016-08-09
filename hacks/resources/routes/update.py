@@ -17,4 +17,4 @@ from flask import jsonify, request
                 'msg': 'update resource',
                 'json': request.get_json() or {}
             }
-        ), 200
+        ), 204
