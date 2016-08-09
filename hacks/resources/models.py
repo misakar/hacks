@@ -6,7 +6,7 @@ from flask import abort
 from datetime import datetime
 
 
-#{=> resources|model <=}
+class #{=> resources|model <=}(db.Entity)
 
     id = orm.PrimaryKey(int, auto=True)
     name = orm.Optional(str, unique=True)
@@ -15,9 +15,9 @@ from datetime import datetime
 
     @staticmethod
     def create(data):
-        user = User()
-        user.from_dict(data)
-        return user
+        resource = #{=> resources|model <=}()
+        resource.from_dict(data)
+        return resource
 
     def from_dict(self, data):
         """
@@ -25,8 +25,8 @@ from datetime import datetime
         """
         for field in ['name']:
             try:
-                setattr(User, field, data[field])
-                setattr(User, 'update_at', timestamp())
+                setattr(#{=> resources|model <=}, field, data[field])
+                setattr(#{=> resources|model <=}, 'update_at', timestamp())
             except KeyError:
                 abort(400)  # bad request
 

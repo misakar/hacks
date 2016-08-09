@@ -137,11 +137,7 @@ def generate(api):
                 with open(destination_file, 'w+') as dstapi_init_file:
                     for line in api_init_file:
                         new_line = line \
-                            .replace('#{=> resources|model <=}',
-                                     'class {ModelName}(db.Entity):' \
-                                .format(ModelName=api[:-1].capitalize())) \
-                            .replace('#{=> resources|super|model <=}',
-                                     'super({ModelName}, self).__init__(**kwargs)' \
+                            .replace('#{=> resources|model <=}', '{ModelName}' \
                                 .format(ModelName=api[:-1].capitalize())) \
                             .replace('#{=> initial|blueprint <=}',
                                      '{bp} = Blueprint("{bp}", __name__)' \
@@ -188,8 +184,7 @@ def generate(api):
                             .replace('#{=> update_resource|function <=}',
                                      "def update_{bp}(id):" \
                                 .format(bp=api)) \
-                            .replace('#{=> resources|name <=}',
-                                     "{bp}" \
+                            .replace('#{=> resources|name <=}', "{bp}" \
                                 .format(bp=api))
 
                         dstapi_init_file.write(new_line)
