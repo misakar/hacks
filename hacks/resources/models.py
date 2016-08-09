@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from apis import db, orm
+from apis.functions import timestamp
 from flask import abort
 from datetime import datetime
 
@@ -10,6 +11,7 @@ from datetime import datetime
     id = orm.PrimaryKey(int, auto=True)
     name = orm.Optional(str, unique=True)
     create_at = orm.Required(datetime, sql_default='CURRENT_TIMESTAMP')
+    update_at = orm.Required(datetime, sql_default='CURRENT_TIMESTAMP')
 
     @staticmethod
     def create(data):
@@ -24,6 +26,7 @@ from datetime import datetime
         for field in ['name']:
             try:
                 setattr(User, field, data[field])
+                setattr(User, 'update_at', timestamp())
             except KeyError:
                 abort(400)  # bad request
 
@@ -34,5 +37,6 @@ from datetime import datetime
         return {
             'id': self.id,
             'create_at': self.create_at.strftime("%Y-%m-%d %H:%M:%S"),
+            'update_at': self.update_at.strftime("%Y-%m-%d %H:%M:%S"),
             'name': self.name,
         }
