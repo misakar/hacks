@@ -9,7 +9,7 @@ dead simple but flexible restful api framework, <br/>
 1. [what is rest ?](http://www.restapitutorial.com/lessons/whatisrest.html)
 2. **how hacks do ?** <br>
 each time you run ***hack generate -api resources***, this is going to implement a full crud restful api for resources as well as search and pagination stuff!
-thanks to [pony orm](https://github.com/ponyorm/pony) flexible [**Set** syntax](https://docs.ponyorm.com/relationships.html), you can easily add one-to-many(many-to-many) relationships and hacks will **automatically generate relationship apis between resources**!
+thanks to [pony orm](https://github.com/ponyorm/pony) flexible [**Set** syntax](https://docs.ponyorm.com/relationships.html), you can easily add [one-to-many(many-to-many) relationships](https://docs.ponyorm.com/relationships.html) and hacks will **automatically generate relationship apis between resources**!
 
 ### Real time back-end service via websocket
 
