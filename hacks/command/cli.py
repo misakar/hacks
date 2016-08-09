@@ -155,7 +155,7 @@ def generate(api):
                             .replace('#{=> resources_post|route <=}',
                                      "@{bp}.route('/', methods=['POST'])" \
                                 .format(bp=api)) \
-                            .replace('#{=> new_resource|function <=}}',
+                            .replace('#{=> new_resource|function <=}',
                                      "def new_{bp}():" \
                                 .format(bp=api)) \
                             .replace('#{=> resources_delete|route <=}',

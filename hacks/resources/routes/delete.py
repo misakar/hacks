@@ -1,9 +1,9 @@
 # coding: utf-8
 
 from apis import db, orm
+from flask import jsonify, request
 #{=> resources|blueprint|import <=}
 #{=> resources|model|import_as <=}
-from flask import jsonify, request
 
 
 #{=> resources_delete|route <=}
