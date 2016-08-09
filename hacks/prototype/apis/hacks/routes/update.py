@@ -2,7 +2,7 @@
 
 import os
 from .. import hacks
-from apis.functions import generateModels, findResources
+from apis.utils import generateModels, findResources
 from flask import request, jsonify, current_app
 
 

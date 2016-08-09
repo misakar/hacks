@@ -1,12 +1,12 @@
 # coding: utf-8
 
 from apis import db, orm
-from apis.functions import timestamp
+from apis.utils import timestamp
 from flask import abort
 from datetime import datetime
 
 
-class #{=> resources|model <=}(db.Entity)
+class #{=> resources|model <=}(db.Entity):
 
     id = orm.PrimaryKey(int, auto=True)
     name = orm.Optional(str, unique=True)
