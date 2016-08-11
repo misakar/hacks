@@ -11,7 +11,14 @@ dead simple but flexible restful api framework, <br/>
 each time you run ***hack generate -api resources***, this is going to implement a full crud restful api for resources as well as search and pagination stuff!
 thanks to [pony orm](https://github.com/ponyorm/pony) flexible [**Set** syntax](https://docs.ponyorm.com/relationships.html), you can easily add [one-to-many(many-to-many) relationships](https://docs.ponyorm.com/relationships.html) and hacks will **automatically generate relationship apis between resources**!
 
-### Real time back-end service via websocket
+### Real time back-end service via socketIO
+hacks apps are capable of full-duplex realtime communication between the client
+and the server using [socketIO](http://socket.io/).  this means that a client
+can maintain a persistent connection to a hacks backend service,  and messages
+can be sent from client to server (AJAX) or from server to client (websocket) at any time.
+<br/>
++ on server side, hacks integrate [flask-socketIO](https://github.com/miguelgrinberg/Flask-SocketIO)
++ and on front-end, hacks use [jinja2](https://github.com/pallets/jinja) template that binding socketio service
 
 ### Flexible api configuration
 + hacks automatically generate resources apis, but you can get complete control by editing apis configuration. you can decide which data **user should post from** or **return as json format**; you can also determine which api **user can access** and set up your own **authentication policy**!
@@ -146,6 +153,9 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 ## $ Todo
 + [x] integrated the [pony orm](https://github.com/ponyorm/pony)
 + [ ] add resources model mixin class
++ [ ] binding socketio
+    + [ ] server-side socketio: flask-socketIO
+    + [ ] client-side jinja2 template
 + [ ] build api resources relationship
 + [ ] configurations
     + [ ] restful api config

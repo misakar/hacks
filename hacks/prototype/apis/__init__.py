@@ -8,7 +8,7 @@ from configs.hacksConfig import hacksConfig
 
 
 db = orm.Database()
-socket = SocketIO()
+socket = SocketIO()  # server side socketIO
 
 
 def create_api(configs=[], main=True):
