@@ -1,8 +1,9 @@
 # ```$_Hacks```
 (still in development)
-<hr>
+<br/>
 dead simple but flexible restful api framework, <br/>
 ~~ for modern back-end web development of your dreams <br/>
+<hr/>
 
 ## $ Features
 ### Restful api all the things !
@@ -30,8 +31,6 @@ well, hacks is built on top of flask! so feel free to use any great flask extens
 ### Great DRY idea
 + hacks based on [DRY idea](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Since I do not want repeat myself, and try to sum up python web development procedure, so hacks appeared!
 + not only that, hacks use the DRY idea for web development, hacks has several useful built-in decorators help you reduce duplication. yes, decorators is awesome!
-
-### Convention over configuration
 
 <hr>
 ## $ Get Start
