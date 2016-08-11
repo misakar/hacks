@@ -25,8 +25,8 @@ class #{=> resources|model <=}(db.Entity):
         """
         for field in ['name']:
             try:
-                setattr(#{=> resources|model <=}, field, data[field])
-                setattr(#{=> resources|model <=}, 'update_at', timestamp())
+                setattr(self, field, data[field])
+                setattr(self, 'update_at', timestamp())
             except KeyError:
                 abort(400)  # bad request
 
