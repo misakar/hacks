@@ -151,7 +151,7 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 <hr>
 ## $ Todo
 + [x] integrated the [pony orm](https://github.com/ponyorm/pony)
-+ [ ] add resources model mixin class
++ [x] add resources model mixin class
 + [ ] binding socketio
     + [ ] server-side socketio: flask-socketIO
     + [ ] client-side jinja2 template
