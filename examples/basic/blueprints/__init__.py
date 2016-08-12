@@ -21,7 +21,8 @@ def create_app(configs=[], main=True):
     from .apis import api
     app.register_blueprint(api, url_prefix='/api')
 
-    #{{ register_bp }}
+    from .apps import main
+    app.register_blueprint(main, url_prefix='/')
 
     return app
 
