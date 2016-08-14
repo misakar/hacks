@@ -64,6 +64,11 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 <hr>
 ## $ Todo
 + [x] integrated the [pony orm](https://github.com/ponyorm/pony)
++ [ ] find a database schema migration tool
++ [ ] refactory hacks project
+    + [x] basic example
+        + [x] apis
+        + [x] apps
 + [x] add resources model mixin class
 + [ ] binding socketio
     + [ ] server-side socketio: flask-socketIO
@@ -72,7 +77,9 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 + [ ] configurations
     + [ ] restful api config
     + [ ] resource bp config
-+ [ ] authentication policy
+    + [ ] authentication policy
++ [ ] front-end workflow
++ [ ] add mongodb layer
 
 <hr>
 ## $ LICENSE
