@@ -1,13 +1,13 @@
 # coding: utf-8
 
-from apis import api, db
+from blueprints import app
+from configs import connection
 from flask_script import Manager
-from apis.configs import connection
 
 
-manager = Manager(api)
+manager = Manager(app)
 
 
 if __name__ == '__main__':
-    api.debug = True
+    app.debug = True
     manager.run()

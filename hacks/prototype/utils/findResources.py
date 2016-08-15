@@ -4,7 +4,7 @@ import os
 from flask import url_for
 
 
-except_list = ['main']
+except_list = []
 dir_list = []
 apis_list = []
 resources_list = []

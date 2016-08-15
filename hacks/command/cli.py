@@ -59,45 +59,36 @@ def new(project_name):
 
     _mkdir(destination)
 
-    for _dir, _dirs, _files in os.walk(prototype):
-        relative = _dir.split(prototype)[1].lstrip(os.path.sep)
-        destination_dir = os.path.join(destination, relative)
+    try:
+        for _dir, _dirs, _files in os.walk(prototype):
+            relative = _dir.split(prototype)[1].lstrip(os.path.sep)
+            destination_dir = os.path.join(destination, relative)
 
-        _mkdir(destination_dir)
+            _mkdir(destination_dir)
 
-        for _file in _files:
-            prototype_file = os.path.join(_dir, _file)
-            destination_file = os.path.join(destination_dir, _file)
-            shutil.copy(prototype_file, destination_file)
+            for _file in _files:
+                prototype_file = os.path.join(_dir, _file)
+                destination_file = os.path.join(destination_dir, _file)
+                shutil.copy(prototype_file, destination_file)
 
-    os.chdir(destination)
-    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m initial api virtual environment.')
+        os.chdir(destination)
 
-    subprocess.check_call('virtualenv apivenv', shell=True)
-    pip = os.path.join(destination, 'apivenv/bin/pip')
-    python = os.path.join(destination, 'apivenv/bin/python')
-    requirements = os.path.join(destination, 'requirements.txt')
-    manage_py = os.path.join(destination, 'manage.py')
-    subprocess.Popen([pip, 'install', '-r', requirements]).wait()
+        logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m setup basic project config.')
+        destination_config_path = os.path.join(destination, 'configs')
+        prototype_config = #
 
-    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m setup basic config.')
+        logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m initial api virtual environment.')
+        subprocess.check_call('virtualenv apivenv', shell=True)
+        pip = os.path.join(destination, 'apivenv/bin/pip')
+        python = os.path.join(destination, 'apivenv/bin/python')
+        requirements = os.path.join(destination, 'requirements.txt')
+        manage_py = os.path.join(destination, 'manage.py')
+        subprocess.Popen([pip, 'install', '-r', requirements]).wait()
 
-    hacksConfig_init = os.path.join(hacks_path, 'configs/__init__.py')
-    hacksConfig_path = os.path.join(hacks_path, 'configs/hacksConfig.py')
-    connection_file  = os.path.join(hacks_path, 'configs/connection.py')
+        logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m done!')
 
-    destinationConfig      = os.path.join(destination, 'apis/configs')
-    destinationConfig_path = os.path.join(destinationConfig, 'hacksConfig.py')
-    destinationConfig_init = os.path.join(destinationConfig, '__init__.py')
-    destin_connetcion      = os.path.join(destinationConfig, 'connection.py' )
-
-    _mkdir(destinationConfig)
-    shutil.copy(hacksConfig_path, destinationConfig_path)
-    shutil.copy(hacksConfig_init, destinationConfig_init)
-    shutil.copy(connection_file, destin_connetcion)
-
-    logger.info('\033[32m[Debug](ง •_•)ง =>\033[0m done!')
-
+    except KeyboardInterrupt:
+        shutil.rmtree(destination)
 
 @click.command()
 @run_in_root

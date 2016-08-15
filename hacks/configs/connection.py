@@ -1,8 +1,8 @@
 # coding: utf-8
 
 import os.path as path
-from .. import db
-from .hacksConfig import project_path
+from models import db
+from .hacksAppConfig import project_path
 
 
 ## pony orm connection setting
