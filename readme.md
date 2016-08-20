@@ -64,7 +64,8 @@ But, I will continue to feed more on Hacks, and finally let Hacks become a
 <hr>
 ## $ Todo
 + [x] integrated the [pony orm](https://github.com/ponyorm/pony)
-+ [ ] find a database schema migration tool
++ [x] find a database schema migration tool
+    + well, [currently need to execute ALTER TABLE command manually.](https://github.com/ponyorm/pony/issues/123)
 + [ ] refactory hacks project
     + [x] basic example
         + [x] apis

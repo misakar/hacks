@@ -1,16 +1,15 @@
 # coding: utf-8
-
 """
     configs~connection.py
     `````````````````````
 
-    setup hacks project database connection
-    now, pony support:
+    database connection
 
-    	- sqlite: in memory or disk
-    	- postgresql
-    	- mysql
-    	- oracle
+        - sqlite in memory
+        - sqlite in disk
+        - postgresql
+        - mysql
+        - oracle
 """
 
 import os.path as path
