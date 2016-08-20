@@ -1,6 +1,5 @@
 # coding: utf-8
 
-
-class {{ apisConfigClass }}(object):
+class apisConfig(object):
 
     RESOURCES_PAGINATION_PERPAGE = 0
