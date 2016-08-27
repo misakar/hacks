@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<meta http-equiv="Content-Language" content="zh-CN" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<meta content="all" name="robots" />
+		<meta name="author" content="������Ϣ" />
+		<meta name="Copyright" content="��Ȩ��Ϣ" />
+		<meta name="description" content="վ�����" />
+		<meta name="keywords" content="վ��ؼ��" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<title>����ʦ����ѧѧ����Ϣ����ƽ̨</title>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- <script language="javascript" src="http://xssw.ccnu.edu.cn:80/zfca/js/ukeylogin.js"></script> -->
+		<script type='text/javascript' src='dwr/interface/UsermanAjax.js'></script>
+		<script type='text/javascript' src='dwr/engine.js'></script>
+<script type='text/javascript' src='dwr/util.js'></script>
+<script language="javascript" src="js/BatAjax.js"></script>
+
+		<link rel="stylesheet" href="http://xssw.ccnu.edu.cn:80/zfca/login/css/module.css"
+			type="text/css" media="all" />
+		<link rel="stylesheet" href="http://xssw.ccnu.edu.cn:80/zfca/login/css/public.css"
+			type="text/css" media="all" />
+		<script type='text/javascript' >
+			if (top!=window){
+  				top.window.location.href='/zfca/logout?'+new Date().getTime();
+			}
+		</script>
+		<!--[if IE 6]>
+<script src="../js/ie6comm.js"></script>
+<script>
+DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+	</head>
+	<body class="login_bg">
+		<div id="container" class="login_main">
+			<div class="login_logo">
+				<h2>
+					<a href="#"><img src="http://xssw.ccnu.edu.cn:80/zfca/login/logo/logo_school.png" />
+					</a>
+				</h2>
+				<h3>
+					<a href="#"><img src="http://xssw.ccnu.edu.cn:80/zfca/login/logo/logo_rz.png" />
+					</a>
+				</h3>
+			</div>
+			<div class="login_left">
+				<img class="login_pic" src="http://xssw.ccnu.edu.cn:80/zfca/login/logo/login_pic.png" />
+			</div>
+			<form id="fm1" name="fm1" class="fm-v clearfix" action="/zfca/login;jsessionid=7827C3B0D9371ECA149FD4315B46605D" method="post" onsubmit="return CheckForm();">
+				<input type="hidden" id="useValidateCode" name="useValidateCode"
+					value="0" />
+				<input type="hidden" id="isremenberme" name="isremenberme"
+					value="0" />
+				<input type="hidden" id="ip" name="ip" value="" />
+				<div class="login_right">
+					<div class="login" id="thetable">
+
+						<div class="hide" id="msg"></div>
+						<div class="user">
+							<label for="">
+								�û���
+							</label>
+
+
+								<input id="username" name="username" class="text_nor" style="width:170px;" tabindex="1" onmouseout="setCookieValue();" onkeypress="if(event.keyCode==13||event.keyCode==9){document.getElementById('password').focus(); return false;}" onkeyup="noPermitInput();" onfocus="hideMsg();" accesskey="n" type="text" value="" autocomplete="false"/>
+
+							<div id="msg_div" class="hide">
+								<div class="prompcon">
+									<p>
+										�������û���
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="passw">
+							<label for="">
+								��&nbsp;&nbsp;&nbsp;�룺
+							</label>
+							<input id="password" name="password" class="text_nor" style="width:170px;" tabindex="2" onkeypress="if(document.getElementById('useValidateCode').value == '1'){if(event.keyCode==13||event.keyCode==9){document.getElementById('j_captcha_response').focus();return false;}}" onkeyup="pwStrength(this.value);" onfocus="hideMsgOne();" accesskey="p" type="password" value="" maxlength="16" autocomplete="off"/>
+							<div id="msg_div1" class="hide">
+								<div class="prompcon">
+									<p>
+										����������
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="yzm" id="yzm" style="display:none;">
+							<label for="">
+								��֤�룺
+							</label>
+							<input type="text" id="j_captcha_response"
+								name="j_captcha_response" size="10" tabindex="3"
+								style="width: 60px" />
+							<img src="captcha.htm" id="captchaimg" width="50px"
+								height="20px;" />
+							<a href="#"
+								onclick="document.getElementById('captchaimg').src='captcha.htm?random='+Math.random();return false">������<br />��һ��</a>
+
+						</div>
+						<div class="sxsj" style="display: none">
+							<label for="">
+								ʧЧʱ�䣺
+							</label>
+							<input id="losetime" name="losetime" tabindex="4" type="text" value=""/>
+							����
+						</div>
+						<div class="login_notice" id="jzw" style="display:none">
+                        	<p style="padding-left: 70px">
+								<input type="checkbox" name="rememberUser" id="rememberUser"
+									value="true" tabindex="5" onclick="rememberUserCheck(this)" />
+								��ס����&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="rememberMe" id="rememberMe"
+									value="true" tabindex="5" />
+								�Զ���¼<!--�����ڲ����ٵ�¼-->
+							</p>
+						</div>
+                        <!--
+						<div class="login_notice" style="display:none">
+							<p style="padding-left: 70px">
+								<input type="checkbox" name="rememberUser" id="rememberUser"
+									value="true" tabindex="5" />
+								��ס�ҵ��û���
+							</p>
+						</div>
+                        -->
+                        <!--<div id="findyhmdiv"class="findyhm" style="display:none">
+							<label for="">
+								�����֤�����룺
+							</label>
+							<input type="text" id="findyhm"
+								name="findyhm" size="10" style="width: 100px" />
+							<a href="######" onclick="findYhmGo()">&nbsp;����</a>
+						</div>-->
+						<div class="btn" style="width:100%; height:30px;">
+                        	<span style="float:left">
+							<input type="hidden" name="lt" value="_c57D3B742-08D8-9059-A5FC-6CCB81542374_kDFFD756C-8F2D-C404-025C-D5757F92B09B" />
+							<input type="hidden" name="_eventId" value="submit" />
+							<input class="btn_dl" name="submit1" type="submit" value=" "
+								accesskey="l" tabindex="6" class="button_dl" />
+                            </span>
+                            <span style="float:left">
+							<!-- <a href="######" onclick="DoJFSignature()" style=" font-weight:bold" >&nbsp;U-KEY��¼</a>
+                            <a href="######" onclick="findYhm()" style=" font-weight:bold" >&nbsp;���Ų�ѯ</a> -->
+							<br />
+							<a
+								href="/zfca/securitycenter/findpwd/recoverpasswd.jsp;jsessionid=7827C3B0D9371ECA149FD4315B46605D">&nbsp;������룿&nbsp;</a>
+                            <!-- <OBJECT classid=clsid:127698e4-e730-4e5c-a2b1-21490a70c8a1 codebase="xenrlinf.cab" id="XEnroll" VIEWASTEXT></OBJECT>
+							<OBJECT id="zflog" name="zflog" classid="clsid:426FD9E1-5A3F-497F-87B0-749917615D0F" codebase="zflog.cab" width=0 height=0></OBJECT> -->
+                            </span>
+						</div>
+						<div id="ipAddr" class="" style="padding-top: 15px !important;">
+							<p>
+								���������ߣ���Ҫ������ActiveX�ؼ��Ľ���
+							</p>
+						</div>
+					</div>
+				</div>
+				<div  class="login_copyright">
+				<span>&copy;1999-2012 <a href="http://www.zfsoft.com"
+						target="_blank">������ɷ����޹�˾</a> <span>��Ȩ����</span>&nbsp;&nbsp;��ϵ�绰��0571-89902828</span><a
+						class="ver" href="#">Ver 3.1.5</a>
+				</div>
+			</form>
+			<script type="text/javascript">
+			window.onload = function(){
+				if("">=3){
+				    document.getElementById("yzm").style.display="";
+				}else{
+					if(document.getElementById("useValidateCode").value=="1"){
+					    document.getElementById("yzm").style.display="";
+					}else{
+					    document.getElementById("yzm").style.display="none";
+					    document.getElementById("j_captcha_response").disabled=true;
+					}
+				}
+				if(""!=null&&""=="true"&&""!=""){
+					showErrMsg("");
+				}
+
+				if(""!=null&&""!=""){
+					showErrMsg("");
+				}else{
+					var rememberUser = getCookie("rememberUser");
+				    if(null != rememberUser && rememberUser != ""){
+				    	//alert("Cookie>>>>>>>>>>"+getCookie("rememberUser"));
+				    	document.getElementById("rememberUser").checked = true;
+				    	document.getElementById('username').value=rememberUser;
+						var rememberPassword = getCookie("rememberPassword");
+						document.getElementById('password').value=rememberPassword;
+				    	document.getElementById('password').focus();
+				    }
+				}
+
+				if(""!=null&&""!=""){
+					showErrMsg("");
+				}
+
+				if(""!=null&&""!=""){
+					showErrMsg("");
+				}
+
+			   if(""!=null&&""!=""){
+					showErrMsg("");
+				}
+				if(""!=null&&""!=""){
+					showErrMsg("");
+				}
+				var exception = getQueryString("exception");
+				if(exception != null && exception=="close"){
+					showErrMsg("�����쳣����ر���������µ�¼��");
+				}
+				this.getIP();
+			    document.getElementById('losetime').value="30";
+			 	document.getElementById('username').focus();
+				if(document.getElementById("isremenberme").value=="1"){
+			    	document.getElementById("jzw").style.display="";
+			    }else{
+			      document.getElementById("jzw").style.display="none";
+			    }
+			}
+
+			function hideMsg(){
+			 var msgdivv=document.getElementById("msg_div");
+	         msgdivv.className = "hide";
+			}
+
+			function hideMsgOne(){
+			 var msg_div1=document.getElementById("msg_div1");
+	             msg_div1.className = "hide";
+			}
+		function CheckForm(){
+			var username=document.getElementById("username");
+		    var password=document.getElementById("password");
+			if(username.value==""){
+			 var msgdivv=document.getElementById("msg_div");
+	         msgdivv.className = "login_error";
+			  return false;
+			}
+			if(password.value==""){
+				 var msg_div1=document.getElementById("msg_div1");
+	             msg_div1.className = "login_error";
+				return false;
+			}
+			if(strong && username.value != password.value){
+			}else{
+				//�������⣬���Ƚ���Ajax��֤
+				dwr.engine.setAsync(false);
+				UsermanAjax.checkAccount(username.value,password.value,function(msg){
+				   if(msg == "ok"){
+					  var service = getQueryString("service");
+					  var qstr = "username="+username.value+"&password="+password.value;
+					  if(service != null && service != ""){
+						  qstr += "&service="+service;
+					  }
+					  window.location.href = "/zfca/securitycenter/modifypwd1.jsp?"+escape(qstr);
+				   }else{
+					  showErrMsg(msg);
+					  return false;
+				   }
+				});
+				return false;
+			}
+			/*
+			//��¼������⣬���Ƚ���Ajax��֤
+			UsermanAjax.checkAccount(username.value,password.value,function(msg){
+			   if(msg == "ok"){
+				   UsermanAjax.checkRetakepw(username.value,password.value,function(msg2){
+				       if(msg2 == "no"){  //��������ȫ����
+				            var qstr = "username="+username.value+"&password="+password.value;
+							alert("������δ�����κε�¼���������ڰ�ȫ���Ľ������ã�");
+					        window.location.href = "remoteLogin?"+qstr+"&issubmit=true&service=main.do";
+							return false;
+					   }
+					});
+			   }else{
+				  showErrMsg(msg);
+				  return false;
+			   }
+			});
+			//���ü�ס�û�����(����AuthenticationViaFormAction�д���)
+			if(document.getElementById("rememberUser").checked == true){
+
+				SetCookie("rememberUser", username.value);
+				SetCookie("rememberPassword", password.value);
+			}else{
+				delCookie("rememberUser");
+				delCookie("rememberPassword");
+			}
+			*/
+		    return true;
+		}
+
+		function showErrMsg(msg){
+				   var msgdiv=  document.getElementById("msg");
+				     	   var status=  document.getElementById("status");
+			   if(status!=null){
+			 status.style.display = "none";
+			  }
+	                msgdiv.innerText=msg;
+
+	               msgdiv.className = "prompt_dl";
+			}
+			function hideMMshow(){
+			  var msgdiv=  document.getElementById("msg");
+			   var status=  document.getElementById("status");
+			   if(status!=null){
+			 status.style.display = "none";
+			  msgdiv.innerText="";}
+	          msgdiv.className = "hide";
+			}
+	       function DoJFSignature(){
+	          var str=fm1.zflog.GetPin();
+	          if (str==null || str==""){
+	              alert("�����U-KEY");
+	          }else{
+                UsermanAjax.getTysfyhb(str,function(tysfyhb){
+                   if(tysfyhb.yhm!=null){
+                      document.getElementById('thetable').style.display = "none";
+                      document.getElementById('username').value=tysfyhb.yhm;
+                      document.getElementById('password').value=tysfyhb.kl;
+                      fm1.submit();
+                   }else{
+                      alert("��֤ʧ�ܣ�");
+                      return false;
+                   }
+                });
+              }
+           }
+
+function getIP(){
+        try{
+                var obj = new ActiveXObject("rcbdyctl.Setting");
+                var ip = obj.GetIPAddress;
+
+        }catch(e){
+        }
+
+        if(ip != null){
+        	document.getElementById("ip").value = ip;
+        	document.getElementById("ipAddr").style.display = "none";
+        }else{
+        	document.getElementById("ipAddr").style.display = "";
+        }
+
+}
+
+//CharMode����
+//����ĳ���ַ���������һ��.
+	var strong = true;
+     function CharMode(iN){
+          if (iN>=48 && iN <=57) //����
+              return 1;
+          if (iN>=65 && iN <=90) //��д��ĸ
+              return 2;
+          if (iN>=97 && iN <=122)  //Сд ��ĸ
+              return 4;
+             else
+              return 8; //�����ַ�
+         }
+
+     //bitTotal����
+     //�����ǰ���뵱��һ���ж�����ģʽ
+
+     function bitTotal(num){
+         var modes=0;
+       for (var i=0;i<4;i++){
+           if (num & 1) modes++;
+             num>>>=1;
+          }
+       return modes;
+      }
+
+
+     //checkStrong����
+     //���������ǿ�ȼ���
+
+     function checkStrong(sPW){
+         if (sPW.length<6)
+             return 0; //����̫��
+          var Modes=0;
+          for (i=0;i<sPW.length;i++){
+            //����ÿһ���ַ�����ͳ��һ���ж�����ģʽ.
+          Modes|=CharMode(sPW.charCodeAt(i));
+               }
+           return bitTotal(Modes);
+         }
+
+      //pwStrength����
+      //���û��ſ����̻����������ʧȥ����ʱ,��ݲ�ͬ�ļ�����ʾ��ʾ
+
+     function pwStrength(pwd){
+          if (pwd==null||pwd==''){
+             hideMMshow();
+           }
+          else{
+            S_level=checkStrong(pwd);
+            switch(S_level) {
+            case 0:
+				   showErrMsg("����̫��,�뼰ʱ�޸�!");
+            	   strong = false;
+            	   break;
+            case 1:
+                   showErrMsg("����ǿ��̫��,�뼰ʱ�޸�!");
+                   strong = false;
+            	   break;
+            default:
+					strong = true;
+                    hideMMshow();
+           }
+        }
+    }
+
+    //Cookie��ס�û���
+    function SetCookie(name,value) {
+	    var Days = 30; //�� cookie �������� 30 ��
+	    var exp = new Date(); //
+	    new Date("December 31, 9998");
+	    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+	    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    }
+
+    //��ȡcookies����
+    function getCookie(name) {
+	    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+	    if(arr != null) return unescape(arr[2]);
+	    return null;
+    }
+
+    //ɾ��cookie
+    function delCookie(name) {
+	    var exp = new Date();
+	    exp.setTime(exp.getTime() - 1);
+	    var cval=getCookie(name);
+	    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+	 function noPermitInput(){
+	   if(document.getElementById('rememberUser').checked){
+		   var username = document.getElementById('username').value;
+		   var arr = getCookie("rememberUser");
+		    if(arr != null && arr == username){
+		      document.getElementById('password').value = getCookie("rememberPassword");
+		    }else{
+		    	document.getElementById('password').value = "";
+		    }
+	    }
+	}
+
+    function setCookieValue(){
+	    if(document.getElementById('rememberUser').checked){
+		    var username = document.getElementById('username').value;
+		    var arr = getCookie("rememberUser");
+		    if(arr != null && arr == username){
+				// alert("arr:"+arr+";pwd:"+getCookie("rememberPassword"));
+		       document.getElementById('password').value =  getCookie("rememberPassword");
+		    }
+	    }
+    }
+
+    function rememberUserCheck(obj){
+    	if(!obj.checked){
+	    	var username = document.getElementById('username').value;
+		    var arr = getCookie("rememberUser");
+		    if(arr != null && arr == username){
+		    	document.getElementById('username').value="";
+				document.getElementById('password').value="";
+		    }
+    	}
+    }
+
+	//����Ajax->webservice��ʽ
+	function findYhm(){
+		if(document.getElementById("findyhmdiv").style.display == "none"){
+			document.getElementById("findyhmdiv").style.display = "";
+		}else{
+			document.getElementById("findyhmdiv").style.display = "none";
+		}
+
+	}
+
+	function findYhmGo(){
+		var querystr = document.getElementById("findyhm").value;
+		if(querystr != null && querystr != ""){
+			UsermanAjax.findYhm(querystr,function(msg){
+			   if(msg != "null" && msg!= null){
+					document.getElementById('username').value=msg;
+			   }else{
+				  showErrMsg("δ�ҵ��û���");
+				  return false;
+			   }
+			});
+		}
+	}
+ </script>
+		</div>
+	</body>
+</html>
